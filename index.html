@@ -2,136 +2,148 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>La Taza Loca</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
-    <style>
-        body {{
-            font-family: 'Roboto Condensed', sans-serif;
-            background-color: #f3e5d3;
-            color: #5b3923;
-        }}
-        header {{
-            background-color: #5b3923;
-            color: white;
-        }}
-        nav.navbar {{
-            background-color: #7b5237;
-        }}
-        nav a.nav-link {{
-            color: white !important;
-        }}
-        .hero img {{
-            width: 100%;
-            max-width: 720px;
-            height: auto;
-            border-radius: 8px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-        }}
-        iframe {{
-            width: 100%;
-            max-width: 600px;
-            height: 300px;
-            border: 0;
-            border-radius: 8px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.2);
-        }}
-        footer {{
-            background-color: #5b3923;
-            color: white;
-        }}
-        #topBtn {{
-            display: none;
-            position: fixed;
-            bottom: 30px;
-            right: 25px;
-            z-index: 99;
-            font-size: 20px;
-            background-color: #7b5237;
-            color: white;
-            border: none;
-            padding: 12px 16px;
-            border-radius: 50%;
-            cursor: pointer;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-        }}
-        #topBtn:hover {{
-            background-color: #5b3923;
-        }}
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>La Taza Loca</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    body {
+      font-family: 'Roboto Condensed', sans-serif;
+      background-color: #f3e5d3;
+      color: #5b3923;
+      text-align: center;
+      margin: 0;
+      padding: 0;
+    }
+    header {
+      background-color: #5b3923;
+      color: white;
+      padding: 20px;
+    }
+    nav {
+      background-color: #7b5237;
+    }
+    nav a.nav-link {
+      color: white !important;
+      padding: 10px 15px;
+      font-weight: bold;
+    }
+    .hero img {
+      width: 100%;
+      max-width: 720px;
+      height: auto;
+      border-radius: 8px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+    .section h2 {
+      color: #5b3923;
+      margin-bottom: 20px;
+    }
+    iframe {
+      width: 100%;
+      max-width: 600px;
+      height: 300px;
+      border: 0;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+    }
+    footer {
+      background-color: #5b3923;
+      color: white;
+      padding: 15px 10px;
+    }
+    #topBtn {
+      display: none;
+      position: fixed;
+      bottom: 30px;
+      right: 25px;
+      z-index: 99;
+      font-size: 20px;
+      background-color: #7b5237;
+      color: white;
+      border: none;
+      outline: none;
+      padding: 12px 16px;
+      border-radius: 50%;
+      cursor: pointer;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    }
+    #topBtn:hover {
+      background-color: #5b3923;
+    }
+  </style>
 </head>
 <body>
 
-<header class="py-4 text-center">
-    <div class="container">
-        <h1 class="display-5">La Taza Loca ☕</h1>
-        <p class="lead">Tu rincón favorito de Café & Lattes</p>
-    </div>
+<header>
+  <h1>La Taza Loca ☕</h1>
+  <p>Tu rincón favorito de Café & Lattes</p>
 </header>
 
 <nav class="navbar navbar-expand-lg">
-    <div class="container">
-        <div class="navbar-nav mx-auto">
-            <a class="nav-link" href="#menu"><i class="fas fa-mug-hot"></i> Menú</a>
-            <a class="nav-link" href="#nosotros"><i class="fas fa-users"></i> Nosotros</a>
-            <a class="nav-link" href="#contacto"><i class="fas fa-map-marker-alt"></i> Contacto</a>
-        </div>
+  <div class="container justify-content-center">
+    <div class="navbar-nav">
+      <a class="nav-link" href="#menu"><i class="fas fa-mug-hot"></i> Menú</a>
+      <a class="nav-link" href="#nosotros"><i class="fas fa-users"></i> Nosotros</a>
+      <a class="nav-link" href="#contacto"><i class="fas fa-map-marker-alt"></i> Contacto</a>
     </div>
+  </div>
 </nav>
 
-<section class="hero text-center py-5" id="menu">
-    <div class="container">
-        <h2 class="mb-4">Descubre nuestro Menú</h2>
-        <img src="menu-taza-loca.png" alt="Menú La Taza Loca" class="img-fluid" />
-    </div>
+<section class="hero py-5" id="menu">
+  <div class="container">
+    <h2>Descubre nuestro Menú</h2>
+    <img src="menu-taza-loca.png" alt="Menú La Taza Loca" class="img-fluid">
+  </div>
 </section>
 
-<section class="section text-center py-5" id="nosotros">
-    <div class="container">
-        <h2 class="mb-4">Sobre Nosotros</h2>
-        <p>En La Taza Loca, nos apasiona el buen café. Desde los granos seleccionados hasta la última gota en tu taza, cada bebida es preparada con amor. Nuestro objetivo es ofrecerte una experiencia cálida, auténtica y llena de sabor.</p>
-    </div>
+<section class="section py-5" id="nosotros">
+  <div class="container">
+    <h2>Sobre Nosotros</h2>
+    <p>En La Taza Loca, nos apasiona el buen café. Desde los granos seleccionados hasta la última gota en tu taza, cada bebida es preparada con amor.
+    Nuestro objetivo es ofrecerte una experiencia cálida, auténtica y llena de sabor.</p>
+  </div>
 </section>
 
-<section class="section text-center py-5" id="contacto">
-    <div class="container">
-        <h2 class="mb-4">Contáctanos</h2>
-        <div class="mb-4">
-            <a href="https://wa.me/526644370267" target="_blank" class="mx-3 text-success fw-bold text-decoration-none">
-                <i class="fab fa-whatsapp"></i> 664 437 0267
-            </a>
-            <a href="https://wa.me/526645631675" target="_blank" class="mx-3 text-success fw-bold text-decoration-none">
-                <i class="fab fa-whatsapp"></i> 664-563-16-75
-            </a>
-        </div>
-        <iframe src="https://www.google.com/maps?q=Ruta+Mariano+Abasolo+7908,+Mariano+Matamoros,+22206+Tijuana,+B.C.,+México&output=embed" allowfullscreen></iframe>
+<section class="section py-5" id="contacto">
+  <div class="container">
+    <h2>Contáctanos</h2>
+    <div class="mb-3">
+      <a href="https://wa.me/526644370267" target="_blank" class="mx-3 text-success fw-bold text-decoration-none">
+        <i class="fab fa-whatsapp"></i> 664 437 0267
+      </a>
+      <a href="https://wa.me/526645631675" target="_blank" class="mx-3 text-success fw-bold text-decoration-none">
+        <i class="fab fa-whatsapp"></i> 664-563-16-75
+      </a>
     </div>
+    <iframe src="https://www.google.com/maps?q=Ruta+Mariano+Abasolo+7908,+Mariano+Matamoros,+22206+Tijuana,+B.C.,+México&output=embed" allowfullscreen></iframe>
+  </div>
 </section>
 
-<footer class="py-3 text-center">
-    <div class="container">
-        <p class="mb-0">© 2025 La Taza Loca. Todos los derechos reservados.</p>
-    </div>
+<footer>
+  <p>© 2025 La Taza Loca. Todos los derechos reservados.</p>
 </footer>
 
-<button id="topBtn" onclick="scrollToTop()" title="Volver arriba"><i class="fas fa-arrow-up"></i></button>
+<!-- Botón de scroll hacia arriba -->
+<button id="topBtn" onclick="scrollToTop()" title="Volver arriba">
+  <i class="fas fa-arrow-up"></i>
+</button>
 
 <script>
-    window.onscroll = function() {{ toggleTopButton(); }};
-    function toggleTopButton() {{
-        const btn = document.getElementById("topBtn");
-        if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {{
-            btn.style.display = "block";
-        }} else {{
-            btn.style.display = "none";
-        }}
-    }}
-    function scrollToTop() {{
-        window.scrollTo({{ top: 0, behavior: 'smooth' }});
-    }}
+  window.onscroll = function() { toggleTopButton(); };
+  function toggleTopButton() {
+    const btn = document.getElementById("topBtn");
+    if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
+      btn.style.display = "block";
+    } else {
+      btn.style.display = "none";
+    }
+  }
+  function scrollToTop() {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
 </script>
 
 </body>
