@@ -170,6 +170,24 @@
   function scrollToTop() {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }
+
+  document.addEventListener("DOMContentLoaded", function() {
+ document.addEventListener("DOMContentLoaded", function() {
+  let visita = localStorage.getItem("contadorVisitas");
+  if (!visita) {
+    visita = 1;
+  } else {
+    visita = parseInt(visita) + 1;
+  }
+  localStorage.setItem("contadorVisitas", visita);
+
+  // Llamar a notificar.php con el número de visita
+  fetch("https://latazaloca.com/notificar.php?visita=" + visita)
+    .then(() => console.log("Visita #" + visita + " notificada"))
+    .catch(err => console.error("Error al notificar:", err));
+});
+  });
+  
 </script>
 
 
