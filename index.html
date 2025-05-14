@@ -192,6 +192,24 @@
   window.onload = function() {
   //document.body.style.backgroundColor = 'green';
 };
+
+  document.addEventListener('DOMContentLoaded', function() {
+    // Obtener el iframe usando la clase 'my-frame'
+    const iframe = document.querySelector('.my-frame');
+    
+    // Verificar si el iframe existe
+    if (iframe) {
+        // Cambiar el fondo del iframe a un color específico (beige en este caso)
+        iframe.style.backgroundColor = '#f1e1b7'; // Cambia el color si es necesario
+        
+        // Eliminar borde del iframe
+        iframe.style.border = 'none';
+
+        // Ajustar el tamaño del iframe
+        iframe.style.width = '100%';
+        iframe.style.height = '600px'; // Ajusta la altura según sea necesario
+    }
+});
 </script>
 
 
