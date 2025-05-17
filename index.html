@@ -19,7 +19,7 @@
     header {
       background-color: #5b3923;
       color: white;
-      
+      min-height: 120px; /* o el tamaño que necesites */
     }
     nav {
       background-color: #7b5237;
@@ -79,6 +79,11 @@
     background-color: #f3e5d3; /* Fondo beige (puedes ajustar el color aquí) */
   height: 113px !important;
 }
+    #logo {
+  max-height: 120px;
+  height: auto;
+  width: auto;
+}
 
     .header-container {
    position: relative;
@@ -113,7 +118,7 @@
   <div class="container d-flex align-items-center">
     <!-- Logo a la izquierda SIEMPRE -->
     <div class="me-3">
-      <img src="logo.png" alt="Logo La Taza Loca" style="height: 80px; width: auto;">
+      <img id="logo" src="logo.png" alt="Logo La Taza Loca" style="height: 80px; width: auto;">
     </div>
 
     <!-- Título y subtítulo centrados horizontalmente -->
@@ -124,8 +129,18 @@
   </div>
 </header>
 
-  
-<!-- NAVEGACIÓN -->
+  <header class="bg-brown text-white d-flex align-items-center py-3">
+  <div class="container d-flex align-items-center">
+    <div class="me-3">
+      <img src="logo.png" alt="Logo La Taza Loca" style="height: 120px; width: auto;">
+    </div>
+    <div class="flex-grow-1 text-center">
+      <h1 class="m-0 fw-bold">La Taza Loca ☕</h1>
+      <p class="m-0">¿Antojo de café? ¡Escríbenos y recógelo en minutos!</p>
+    </div>
+  </div>
+</header>
+<!-- 
 <nav class="navbar navbar-expand-md" style="background-color: #7b5237;">
   <div class="container">
     <!-- Botón hamburguesa -->
@@ -160,7 +175,7 @@
     </div>
   </div>
 </nav>
-  
+  -->
 <section class="hero py-5" id="menu">
   <div class="container">
     <h2>Menú</h2>
