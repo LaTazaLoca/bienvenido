@@ -110,16 +110,16 @@
       .navbar-toggler-icon {
     background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(255,255,255,1)' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
   }
-    #btn-facebook {
+  #btn-facebook {
   position: fixed;
-  bottom: 150px; /* arriba del de WhatsApp */
+  bottom: 160px;
   right: 20px;
   z-index: 9999;
-  background: white;
   border-radius: 50%;
-  padding: 8px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
-  transition: transform 0.3s;
+  transition: transform 0.2s ease-in-out;
+}
+#btn-facebook img {
+  border-radius: 50%;
 }
 #btn-facebook:hover {
   transform: scale(1.1);
