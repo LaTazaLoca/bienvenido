@@ -275,7 +275,7 @@
           
           <div class="mt-4">
             <p class="small mb-0">
-              <i class="fas fa-users me-1"></i> <span id="contador-vistas"></span>
+              <i class="fas fa-users me-1"></i> <span id="contador-vistas2"></span>
             </p>
           </div>
         </div>
@@ -341,11 +341,16 @@
     })
     .then(visitas => {
       const contador = document.getElementById("contador-vistas");
+      const contador2 = document.getElementById("contador-vistas2");
       const visitasNum = parseInt(visitas);
       if (!isNaN(visitasNum)) {
         contador.textContent = `+${visitasNum} personas nos visitaron esta semana`;
+                contador2.textContent = `+${visitasNum} personas nos visitaron esta semana`;
+
       } else {
         contador.textContent = "No se pudo cargar el contador";
+                contador2.textContent = "No se pudo cargar el contador";
+
       }
     })
     .catch(error => {
