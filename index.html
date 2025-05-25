@@ -153,45 +153,41 @@
               <input class="form-check-input" type="radio" name="categoria" value="cafe" id="radioCafe">
               <label class="form-check-label" for="radioCafe">Café</label>
             </div>
-            <div class="form-check">
+            <div id="seccion-cafe" class="ms-3 mt-2" style="display:none">
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" name="bebidas" value="Americano" data-precio="55" id="americano">
+                <label class="form-check-label" for="americano">Americano ($55)</label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" name="bebidas" value="Latte Vainilla" data-precio="65" id="latteVainilla">
+                <label class="form-check-label" for="latteVainilla">Latte Vainilla ($65)</label>
+              </div>
+            </div>
+
+            <div class="form-check mt-3">
               <input class="form-check-input" type="radio" name="categoria" value="sin-cafe" id="radioSinCafe">
               <label class="form-check-label" for="radioSinCafe">Sin Café</label>
             </div>
-            <div class="form-check">
+            <div id="seccion-sin-cafe" class="ms-3 mt-2" style="display:none">
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" name="bebidas" value="Chai" data-precio="75" id="chai">
+                <label class="form-check-label" for="chai">Chai ($75)</label>
+              </div>
+            </div>
+
+            <div class="form-check mt-3">
               <input class="form-check-input" type="radio" name="categoria" value="frappe" id="radioFrappe">
               <label class="form-check-label" for="radioFrappe">Frappés</label>
             </div>
-          </div>
-
-          <div class="mb-4 seccion seccion-cafe" style="display:none">
-            <h6>Café ☕</h6>
-            <div class="form-check">
-              <input class="form-check-input" type="checkbox" name="bebidas-cafe" value="Americano" data-precio="55" id="americano">
-              <label class="form-check-label" for="americano">Americano ($55)</label>
-            </div>
-            <div class="form-check">
-              <input class="form-check-input" type="checkbox" name="bebidas-cafe" value="Latte Vainilla" data-precio="65" id="latteVainilla">
-              <label class="form-check-label" for="latteVainilla">Latte Vainilla ($65)</label>
+            <div id="seccion-frappe" class="ms-3 mt-2" style="display:none">
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" name="bebidas" value="Oreo" data-precio="60" id="oreo">
+                <label class="form-check-label" for="oreo">Oreo ($60)</label>
+              </div>
             </div>
           </div>
 
-          <div class="mb-4 seccion seccion-sin-cafe" style="display:none">
-            <h6>Sin Café 🍫</h6>
-            <div class="form-check">
-              <input class="form-check-input" type="checkbox" name="bebidas-sin-cafe" value="Chai" data-precio="75" id="chai">
-              <label class="form-check-label" for="chai">Chai ($75)</label>
-            </div>
-          </div>
-
-          <div class="mb-4 seccion seccion-frappe" style="display:none">
-            <h6>Frappés ❄️</h6>
-            <div class="form-check">
-              <input class="form-check-input" type="checkbox" name="frappes" value="Oreo" data-precio="60" id="oreo">
-              <label class="form-check-label" for="oreo">Oreo ($60)</label>
-            </div>
-          </div>
-
-          <div class="mb-4 seccion">
+          <div class="mb-4">
             <h6>Extras ✨</h6>
             <div class="form-check">
               <input class="form-check-input" type="checkbox" name="extras" value="Shot de café" data-precio="25" id="shotCafe">
@@ -442,15 +438,21 @@
     });
 });
 
-const categoriaRadios = document.querySelectorAll('input[name="categoria"]');
-  const secciones = {
-    "cafe": document.querySelector('.seccion-cafe'),
-    "sin-cafe": document.querySelector('.seccion-sin-cafe'),
-    "frappe": document.querySelector('.seccion-frappe')
-  };
-  categoriaRadios.forEach(radio => {
-    radio.addEventListener("change", () => {
-      secciones[radio.value].style.display = "block";
+const radioInputs = document.querySelectorAll('input[name="categoria"]');
+
+  radioInputs.forEach(radio => {
+    radio.addEventListener('change', () => {
+      document.getElementById('seccion-cafe').style.display = 'none';
+      document.getElementById('seccion-sin-cafe').style.display = 'none';
+      document.getElementById('seccion-frappe').style.display = 'none';
+
+      if (radio.value === 'cafe') {
+        document.getElementById('seccion-cafe').style.display = 'block';
+      } else if (radio.value === 'sin-cafe') {
+        document.getElementById('seccion-sin-cafe').style.display = 'block';
+      } else if (radio.value === 'frappe') {
+        document.getElementById('seccion-frappe').style.display = 'block';
+      }
     });
   });
 
@@ -458,17 +460,25 @@ const categoriaRadios = document.querySelectorAll('input[name="categoria"]');
     let mensaje = "🧾 *Pedido:*\n";
     let total = 0;
     const categoria = document.querySelector('input[name="categoria"]:checked');
-    if (categoria) mensaje += `• Categoría preferida: ${categoria.value.toUpperCase()}\n`;
+    if (categoria) mensaje += `• Categoría seleccionada: ${categoria.value.toUpperCase()}\n`;
 
-    let bebidas = [];
-    document.querySelectorAll('input[name="bebidas-cafe"]:checked').forEach(i => { bebidas.push(`${i.value} ($${i.dataset.precio})`); total += parseFloat(i.dataset.precio); });
-    document.querySelectorAll('input[name="bebidas-sin-cafe"]:checked').forEach(i => { bebidas.push(`${i.value} ($${i.dataset.precio})`); total += parseFloat(i.dataset.precio); });
-    document.querySelectorAll('input[name="frappes"]:checked').forEach(i => { bebidas.push(`${i.value} ($${i.dataset.precio})`); total += parseFloat(i.dataset.precio); });
-    if (bebidas.length > 0) mensaje += "• Bebidas:\n" + bebidas.map(b => `   - ${b}\n`).join("");
+    const bebidas = document.querySelectorAll('input[name="bebidas"]:checked');
+    if (bebidas.length > 0) {
+      mensaje += "• Bebidas:\n";
+      bebidas.forEach(b => {
+        mensaje += `   - ${b.value} ($${b.dataset.precio})\n`;
+        total += parseFloat(b.dataset.precio);
+      });
+    }
 
-    let extras = [];
-    document.querySelectorAll('input[name="extras"]:checked').forEach(e => { extras.push(`${e.value} ($${e.dataset.precio})`); total += parseFloat(e.dataset.precio); });
-    if (extras.length > 0) mensaje += "• Extras:\n" + extras.map(e => `   - ${e}\n`).join("");
+    const extras = document.querySelectorAll('input[name="extras"]:checked');
+    if (extras.length > 0) {
+      mensaje += "• Extras:\n";
+      extras.forEach(e => {
+        mensaje += `   - ${e.value} ($${e.dataset.precio})\n`;
+        total += parseFloat(e.dataset.precio);
+      });
+    }
 
     mensaje += `\n💵 *Total: $${total}*`;
     mensaje += `\n\n✅ *Gracias por tu pedido en La Taza Loca*`;
@@ -481,9 +491,9 @@ const categoriaRadios = document.querySelectorAll('input[name="categoria"]');
       bootstrap.Modal.getInstance(document.getElementById('pedidoModal')).hide();
       document.getElementById('formulario-pedido').reset();
       document.getElementById('confirmacion').classList.add('d-none');
-      document.querySelector('.seccion-cafe').style.display = 'none';
-      document.querySelector('.seccion-sin-cafe').style.display = 'none';
-      document.querySelector('.seccion-frappe').style.display = 'none';
+      document.getElementById('seccion-cafe').style.display = 'none';
+      document.getElementById('seccion-sin-cafe').style.display = 'none';
+      document.getElementById('seccion-frappe').style.display = 'none';
     }, 2500);
   }
 </script>
