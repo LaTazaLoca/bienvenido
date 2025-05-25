@@ -155,11 +155,11 @@
             </div>
             <div id="seccion-cafe" class="ms-3 mt-2" style="display:none">
               <div class="form-check">
-                <input class="form-check-input" type="checkbox" name="bebidas" value="Americano" data-precio="55" id="americano">
+                <input class="form-check-input opcion" type="checkbox" name="bebidas" value="Americano" data-precio="55" id="americano">
                 <label class="form-check-label" for="americano">Americano ($55)</label>
               </div>
               <div class="form-check">
-                <input class="form-check-input" type="checkbox" name="bebidas" value="Latte Vainilla" data-precio="65" id="latteVainilla">
+                <input class="form-check-input opcion" type="checkbox" name="bebidas" value="Latte Vainilla" data-precio="65" id="latteVainilla">
                 <label class="form-check-label" for="latteVainilla">Latte Vainilla ($65)</label>
               </div>
             </div>
@@ -170,7 +170,7 @@
             </div>
             <div id="seccion-sin-cafe" class="ms-3 mt-2" style="display:none">
               <div class="form-check">
-                <input class="form-check-input" type="checkbox" name="bebidas" value="Chai" data-precio="75" id="chai">
+                <input class="form-check-input opcion" type="checkbox" name="bebidas" value="Chai" data-precio="75" id="chai">
                 <label class="form-check-label" for="chai">Chai ($75)</label>
               </div>
             </div>
@@ -181,7 +181,7 @@
             </div>
             <div id="seccion-frappe" class="ms-3 mt-2" style="display:none">
               <div class="form-check">
-                <input class="form-check-input" type="checkbox" name="bebidas" value="Oreo" data-precio="60" id="oreo">
+                <input class="form-check-input opcion" type="checkbox" name="bebidas" value="Oreo" data-precio="60" id="oreo">
                 <label class="form-check-label" for="oreo">Oreo ($60)</label>
               </div>
             </div>
@@ -190,11 +190,15 @@
           <div class="mb-4">
             <h6>Extras ✨</h6>
             <div class="form-check">
-              <input class="form-check-input" type="checkbox" name="extras" value="Shot de café" data-precio="25" id="shotCafe">
+              <input class="form-check-input opcion" type="checkbox" name="extras" value="Shot de café" data-precio="25" id="shotCafe">
               <label class="form-check-label" for="shotCafe">Shot de café ($25)</label>
             </div>
           </div>
         </form>
+
+        <!-- Mostrar total en vivo -->
+        <div class="text-center fw-bold fs-5" id="totalDisplay">💵 Total: $0</div>
+
         <div id="confirmacion" class="alert alert-success d-none text-center mt-3" role="alert">
           ✅ Pedido realizado. ¡Gracias!
         </div>
@@ -439,6 +443,7 @@
 });
 
 const radioInputs = document.querySelectorAll('input[name="categoria"]');
+  const totalDisplay = document.getElementById('totalDisplay');
 
   radioInputs.forEach(radio => {
     radio.addEventListener('change', () => {
@@ -453,8 +458,21 @@ const radioInputs = document.querySelectorAll('input[name="categoria"]');
       } else if (radio.value === 'frappe') {
         document.getElementById('seccion-frappe').style.display = 'block';
       }
+      actualizarTotal();
     });
   });
+
+  document.querySelectorAll('.opcion').forEach(el => {
+    el.addEventListener('change', actualizarTotal);
+  });
+
+  function actualizarTotal() {
+    let total = 0;
+    document.querySelectorAll('.opcion:checked').forEach(el => {
+      total += parseFloat(el.dataset.precio);
+    });
+    totalDisplay.textContent = `💵 Total: $${total}`;
+  }
 
   function enviarWhatsapp() {
     let mensaje = "🧾 *Pedido:*\n";
@@ -494,6 +512,7 @@ const radioInputs = document.querySelectorAll('input[name="categoria"]');
       document.getElementById('seccion-cafe').style.display = 'none';
       document.getElementById('seccion-sin-cafe').style.display = 'none';
       document.getElementById('seccion-frappe').style.display = 'none';
+      totalDisplay.textContent = '💵 Total: $0';
     }, 2500);
   }
 </script>
